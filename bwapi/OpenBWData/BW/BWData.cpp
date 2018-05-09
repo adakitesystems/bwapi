@@ -318,7 +318,7 @@ struct ui_wrapper {
 struct draw_ui_wrapper {
   draw_ui_wrapper(bwgame::state& st, std::string mpq_path) {}
   std::tuple<int, int, uint32_t*> draw(int x, int y, int width, int height) {
-    return std::make_tuple(0, 0, (uint32_t*)nullptr);
+    return std::tuple<int, int, uint32_t*>(0, 0, nullptr);
   }
 };
 
@@ -1595,7 +1595,7 @@ void Game::setRandomSeed(uint32_t value)
   impl->st.lcg_rand_state = value;
 }
 
-void Game::disableTriggers()  
+void Game::disableTriggers()
 {
   impl->st.trigger_timer = -1;
 }
