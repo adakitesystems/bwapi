@@ -408,9 +408,11 @@ namespace BWAPI
 
     if ( !this->calledMatchEnd )
     {
+      const bool isWinner = this->self() && this->self()->isVictorious();
+
       this->calledMatchEnd = true;
       events.push_back(Event::MatchFrame());
-      events.push_back(Event::MatchEnd(false));
+      events.push_back(Event::MatchEnd(isWinner));
       server.update();
       this->inGame = false;
       events.push_back(Event::MenuFrame());
